@@ -1,19 +1,25 @@
 package workHome;
 
+import java.util.regex.Pattern;
+
 public final class Utils {
     private Utils() {
     }
 
-    public static int checkInputFields(String input1, String input2, String input3) {
-        int a = 0;
-        int b = 0;
-        int c = 0;
-        if (input1.length() == 0) {
-        } else a = 1;
-        if (input2.length() == 0) {
-        } else b = 1;
-        if (input3.length() == 0) {
-        } else c = 1;
-        return a + b + c;
+    public static int wordCounter(String text) {
+        Pattern pattern = Pattern.compile("\\W+", Pattern.UNICODE_CHARACTER_CLASS);
+        return pattern.split(text).length;
     }
+
+    public static boolean isPalindrome(String text) {
+        String optima = Pattern.compile("\\W",Pattern.UNICODE_CHARACTER_CLASS)
+                .matcher(text)
+                .replaceAll("")
+                .toLowerCase();
+
+        StringBuilder reverse = new StringBuilder(optima).reverse();
+        return (reverse.toString()).equals(optima);
+    }
+
+
 }
